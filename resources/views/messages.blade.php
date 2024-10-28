@@ -14,10 +14,11 @@
         @else
             <ul>
                 @foreach($messages as $message)
-                    <li>{{ $message->text }}</li>
+                    <li style="display: flex; @if ($message->subrayado==='si') text-decoration: underline black; @endif @if ($message->negrita==='si') font-weight: bold; @endif">{{ $message->text }}<form action="{{ route('edit.form', $message->id) }}" method="get"><button type="submit">Editar</button></form></li>
                 @endforeach
             </ul>
         @endif
+        <button type="button"><a href="{{ route('load.form') }}">Introducir nuevo mensaje</a></button>
     </div>
 </body>
 </html>
